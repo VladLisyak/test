@@ -1,0 +1,50 @@
+<div class="container" ng-controller = "editCtrl">
+	<h1>User detail</h1>
+
+	<form name="form" class="form-horizontal">
+		<div class="control-group">
+			<label class="control-label" for="inputName">First name:</label>
+			<div class="controls">
+				<input class="form-control" type="text" id="inputName" name="name" required ng-model="user.name"/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="inputAge">Age:</label>
+			<div class="controls">
+				<input  class="form-control" type="text" id="inputAge" name="age" required ng-model="user.age"/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="isAdmin">Is Admin:</label>
+			<div class="controls" id="isAdmin" class="form-control" >
+				<div ng-if="user.isAdmin == true">
+					<label class="radio-inline"><input type="radio"  name="optradio" ng-model="user.isAdmin" ng-value="true" checked = "checked">true</label>
+					<label class="radio-inline"><input type="radio"  name="optradio" ng-model="user.isAdmin" ng-value="false">false</label>
+				</div>
+				<div ng-if="user.isAdmin != true">
+					<label class="radio-inline"><input type="radio"  name="optradio" ng-model="user.isAdmin" ng-value="true">true</label>
+					<label class="radio-inline"><input type="radio"  name="optradio" ng-model="user.isAdmin" ng-value="false" checked = "checked">false</label>
+				</div>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="theDate">Date created :</label>
+			<div class="controls">
+				<input type="text" id="theDate" class = "form-control" disabled ng-model="user.createdDate">
+			</div>
+		</div>
+		<br>
+		<div class="control-group">
+			<div class="controls">
+
+
+				<a ng-click="cancel()" class="btn btn-small">Cancel</a>
+				<a ng-show = "!form.name.$error.required && !form.age.$error.required"
+				   ng-click="updateUser()" class="btn btn-small btn-primary">update user</a>
+				<span ng-show = "form.name.$error.required || form.age.$error.required" class = "alert alert-danger">Please, fill the fields</span>
+
+
+			</div>
+		</div>
+	</form>
+</div>

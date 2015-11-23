@@ -1,0 +1,37 @@
+<div class="container" ng-controller="addCtrl">
+	<h1>Add user</h1>
+
+	<form class="form-horizontal" name = "form">
+		<div class="control-group">
+			<label class="control-label" for="inputName">First name:</label>
+			<div class="controls">
+				<input class="form-control" type="text" id="inputName" name = "name" required ng-model="user.name"/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="inputAge">Age:</label>
+			<div class="controls">
+				<input  class="form-control" type="text" id="inputAge" name="age" required ng-model="user.age"/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="isAdmin">Is Admin:</label>
+			<div class="controls" id="isAdmin" class="form-control">
+				<label class="radio-inline"><input type="radio"  name="optradio" ng-model="user.isAdmin" ng-value="true" checked = "checked">true</label>
+				<label class="radio-inline"><input type="radio"  name="optradio" ng-model="user.isAdmin" ng-value="false">false</label>
+			</div>
+		</div>
+		<br>
+		<div class="control-group">
+			<div class="controls">
+				<a ng-click="cancel()" class="btn btn-small">cancel</a>
+
+				<a ng-show = "!form.name.$error.required && !form.age.$error.required"
+					   ng-click="createNewUser()" class="btn btn-small btn-primary">create new user</a>
+
+				    <span ng-show = "form.name.$error.required || form.age.$error.required" class = "alert alert-danger">Please, fill the fields</span>
+
+			</div>
+		</div>
+	</form>
+</div>
